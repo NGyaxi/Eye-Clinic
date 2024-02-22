@@ -1,15 +1,15 @@
 {
-  "name": "del",
+  "name": "eye-clinic",
   "version": "1.0.0",
-  "description": "",
+  "description": "eye clinic",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "electron": "^28.2.3",
     "mysql": "^2.18.1"
   }

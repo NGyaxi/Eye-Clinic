@@ -1,70 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 </head>
 <body>
-   <body> 
-      <div class="container">
-         <header>Login Form</header> 
-         <form id="loginForm">
-            <div class="input-field">
-               <input type="text" name="username" required>
-               <label>Email or Username</label>
-            </div>
-            <div class="input-field">
-               <input class="pswrd" type="password" name="password" required>
-               <span class="show">SHOW</span>
-               <label>Password</label>
-            </div>
-            <div class="button">
-               <div class="inner"></div>
-               <button type="submit">LOGIN</button>
-            </div>
-         </form>
-      </div>
-      <script>
-         var input = document.querySelector('.pswrd');
-         var show = document.querySelector('.show');
-         show.addEventListener('click', togglePasswordVisibility);
-         
-         function togglePasswordVisibility() {
-           if (input.type === "password") {
-             input.type = "text";
-             show.textContent = "HIDE";
-           } else {
-             input.type = "password";
-             show.textContent = "SHOW";
-           }
-         }
+  <div class="container">
+    <header>Login Form</header>
+      <form id="loginForm">
+        <div class="input-field">
+          <input type="text" name="username" id="username" required>
+          <label>Email or Username</label>
+        </div>
+        <div class="input-field">
+          <input class="pswrd" type="password" name= "password" id="password" required>
+          <span class="show">SHOW</span>
+          <label>Password</label>
+        </div>
+        <div class="button">
+          <div class="inner"></div>
+          <button type="submit" >LOGIN</button>
+        </div>
+    </form>
+  </div>
 
-         const { ipcRenderer } = require('electron');
+<!-- index.html -->
+<script src="./backend/renderer.js"></script>
 
-         const loginForm = document.getElementById('loginForm');
-         loginForm.addEventListener('submit', (event) => {
-           event.preventDefault();
-           const formData = new FormData(loginForm);
-           const credentials = {
-             username: formData.get('username'),
-             password: formData.get('password')
-           };
+<script>
 
-           // Send login event to the main process
-           ipcRenderer.send('login', credentials);
-         });
+var input = document.querySelector('.pswrd');
+    var show = document.querySelector('.show');
+    show.addEventListener('click', active);
+    function active(){
+    if(input.type === "password"){
+      input.type = "text";
+      show.style.color = "#1DA1F2";
+      show.textContent = "HIDE";
+    }else{
+      input.type = "password";
+      show.textContent = "SHOW";
+      show.style.color = "#111";
+    }
+  }
+  </script>
+  
+  
 
-         // Listen for login response from main process
-         ipcRenderer.on('login-successful', () => {
-           alert('Login successful!');
-           // Redirect or perform necessary actions upon successful login
-         });
-
-         ipcRenderer.on('login-failed', () => {
-           alert('Login failed. Please check your credentials.');
-         });
-      </script>
-   </body>
 </body>
 </html>

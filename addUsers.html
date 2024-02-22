@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add this line to include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Add User</title>
+</head>
+<body>
+    <div class="addBtn">
+        <button class="btn btn-success pull-right" data-toggle="modal" data-target=".bd-example-modal-lg">Add User</button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form fields for adding a user -->
+                    <form id="addUserForm" action="" method="POST">
+                        <div class="form-group">
+                            <label for="userName">User Name</label>
+                            <input type="text" class="form-control" name="username" id="userName" placeholder="Enter user name">
+                            <span id="userNameError" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                            <span id="passwordError" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <select name="role" id="role" class="form-control">
+                                <option value="">Select</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Doctor">Doctor</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <span id="roleError" class="text-danger"></span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" id="submitBtn" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('addUserForm');
+    if (!form) {
+        console.error('Form element not found');
+        return;
+    }
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var userName = document.getElementById('userName').value.trim();
+        var userNameError = document.getElementById('userNameError');
+        if (userName === '') {
+            userNameError.textContent = 'User name is required';
+        } else {
+            userNameError.textContent = '';
+        }
+
+        var password = document.getElementById('password').value.trim();
+        var passwordError = document.getElementById('passwordError');
+        if (password === '') {
+            passwordError.textContent = 'Password is required';
+        } else {
+            passwordError.textContent = '';
+        }
+
+        var role = document.getElementById('role').value;
+        var roleError = document.getElementById('roleError');
+        if (role === '') {
+            roleError.textContent = 'Role selection is required';
+        } else {
+            roleError.textContent = '';
+        }
+
+        if (userNameError.textContent || passwordError.textContent || roleError.textContent) {
+            return;
+        }
+
+        if (window.electron && window.electron.ipcRenderer) {
+            window.electron.ipcRenderer.send('addUser', { username: userName, password: password, role: role });
+
+            window.electron.ipcRenderer.on('addUserResponse', (event, response) => {
+                if (response.success) {
+                    // Reset the form
+                    form.reset();
+                    // Show SweetAlert for success with a button
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'User added successfully',
+                        showConfirmButton: true,
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        // Redirect to another page
+                        window.location.href = 'addUsers.html'; // Change 'dashboard.html' to your desired URL
+                    });
+                } 
+                 else {
+                    // Show SweetAlert for error
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: response.error
+                    });
+                }
+            });
+        } else {
+            console.error('ipcRenderer is not available.');
+        }
+    });
+});
+
+
+
+    </script>
+</body>
+</html>
