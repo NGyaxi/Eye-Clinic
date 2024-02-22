@@ -11,7 +11,8 @@ const addPat = require('./src/backend/patientsQuery');
 
 // Handle login requests using the loginHandler module
 ipcMain.on('login', loginHandler);
-ipcMain.on('getPatientsList', patientsList);
+ipcMain.on('getPatientsList', patientsList.getPatientsList);
+ipcMain.on('getBirthdayList', patientsList.getBirthdayList);
 ipcMain.on('lastID', lastID);
 ipcMain.on('addPat', addPat);
 // ipcMain.on('fetchData', fetchData);
@@ -57,3 +58,4 @@ function createWindow() {
     // Re-create the main window if it's null (e.g., after closing on macOS)
     if (mainWindow === null) createWindow();
   });
+  

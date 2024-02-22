@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td>${index + 1}</td>
                 <td>${patient.patients_id}</td>
                 <td>${patient.fulname}</td>
-                <td>${patient.telephone}</td>
+                <td>${patient.phone}</td>
                 <td>${patient.patients_type}</td>
                 <td>${patient.date_added}</td>
                 <td>
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Set the value of the input field with the last patient ID
             const lastPatientIdInput = document.getElementById('last-patient-id');
             if (lastPatientIdInput) {
-                lastPatientIdInput.value = lastPatientId+1;
+                lastPatientIdInput.value = parseInt(lastPatientId, 10) + 1;
             }
         });
     }

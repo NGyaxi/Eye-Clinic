@@ -107,8 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         showConfirmButton: true,
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        // Redirect to another page
-                        window.location.href = 'users_dashboard.html'; // Change 'dashboard.html' to your desired URL
+                        window.location.href = 'user_dashboard.html'; // Change 'dashboard.html' to your desired URL
                     });
                 } 
                  else {

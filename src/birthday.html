@@ -200,8 +200,6 @@
     <script src="assets/datatables/export-tables/vfs_fonts.js"></script>
     <script src="assets/datatables/buttons.html5.min.js"></script>
     <script src="assets/datatables/export-tables/buttons.print.min.js"></script>
-    <script src="./backend/patient.js"></script>
-    <script src="./backend/addPatients.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#example').DataTable( {
@@ -212,6 +210,62 @@
             table.buttons().container()
                 .appendTo( '#example_wrapper .col-md-6:eq(0)' );
         } );
+
+        
+        
+        
+        
+        document.addEventListener('DOMContentLoaded', function () {
+    // Function to fetch birthday list from the main process
+    function fetchBirthdayList() {
+        if (window.electron && window.electron.ipcRenderer) {
+            window.electron.ipcRenderer.send('getBirthdayList');
+        }
+    }
+
+    // Function to display birthday list in the table
+    function displayBirthdayList(patients) {
+        const birthdayTable = document.getElementById('birthdayList');
+        birthdayTable.innerHTML = ''; // Clear previous data
+
+        patients.forEach((patient, index) => {
+            const fullNameParts = patient.fulname.split(' ');
+            const firstName = fullNameParts[0];
+            const lastName = fullNameParts.slice(1).join(' ');
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${firstName}</td>
+                <td>${lastName}</td>
+                <td>${patient.phone}</td>
+                <td>${patient.date_birth}</td>
+            `;
+            birthdayTable.appendChild(row);
+        });
+    }
+
+    // Call the function to fetch birthday list when the page loads
+    fetchBirthdayList();
+
+    // Event listener for receiving birthday list from the main process
+    if (window.electron && window.electron.ipcRenderer) {
+        window.electron.ipcRenderer.on('birthday-list', (event, patients) => {
+            displayBirthdayList(patients);
+        });
+    }
+
+    // Event listener for handling errors while fetching birthday list
+    if (window.electron && window.electron.ipcRenderer) {
+        window.electron.ipcRenderer.on('birthday-list-error', (event, errorMessage) => {
+            console.error('Error fetching birthday list:', errorMessage);
+            alert('Error fetching birthday list: ' + errorMessage);
+        });
+    }
+});
+
+
+
 
     </script>
 
