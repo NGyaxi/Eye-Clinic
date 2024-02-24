@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Eye</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Eye Clinic
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="patients.php">
+                        <i class="pe-7s-users"></i>
+                        <p>Patients File</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="price&exam.php">
+                        <i class="pe-7s-note2"></i>
+                        <p>Price & Examination</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="eye_examination.php">
+                        <i class="pe-7s-look"></i>
+                        <p>Eye Examination</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="record_payment.php">
+                        <i class="pe-7s-cash"></i>
+                        <p>Record Payment</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="birthday.php">
+                        <i class="pe-7s-id"></i>
+                        <p>Birthday List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.php">
+                        <i class="pe-7s-user"></i>
+                        <p>Profile</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a href="">
+                        <i class="pe-7s-left-arrow"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="user_dashboard.html">Patients</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                                <p class="hidden-lg hidden-md">Patients</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               <p>Notification</p>
+                            </a>
+                        </li>
+                        <li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <p><a href="user_dashboard.html"><button type="submit" class="btn btn-info btn-fill">Back</button></a></p>
+                                <h4 class="title">Patients Details</h4>
+                            </div>
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Patients Name</label>
+                                                <input type="text" class="form-control" id="patientName">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Patient Type</label>
+                                                <input type="text" class="form-control" id="patientType">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Patients No.</label>
+                                                <input type="text" class="form-control" id="patientNo">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Occupation</label>
+                                                <input type="text" class="form-control" id="occupation">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Organization</label>
+                                                <input type="text" class="form-control" id="organization">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Residential Address</label>
+                                                <input type="text" class="form-control" id="rAddress">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Postal Address</label>
+                                                <input type="text" class="form-control"  id="pAddress">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" id="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Age</label>
+                                                <input type="text" class="form-control" id="age">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Telephone</label>
+                                                <input type="text" class="form-control" id="phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Date of Birth</label>
+                                                <input type="text" class="form-control" id="dob">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Gender</label>
+                                                <input type="text" class="form-control" id="gender">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="">Delecielo Opilca</a>, 0573657192 / 0246546124
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <script src="assets/js/demo.js"></script>
+    <script>
+        // Retrieve patient ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const patientId = urlParams.get('id');
+    
+        // Send request to main process to fetch patient details
+        if (window.electron && window.electron.ipcRenderer) {
+            window.electron.ipcRenderer.send('getPatientDetails', patientId);
+        }
+    
+        // Receive patient details from main process
+        window.electron.ipcRenderer.on('patient-details', (event, patientDetails) => {
+            // Populate form fields with patient details
+            document.getElementById('patientName').value = patientDetails.fulname;
+            document.getElementById('patientType').value = patientDetails.patients_type;
+            document.getElementById('patientNo').value  = 'DES' + patientDetails.patients_id;
+            document.getElementById('occupation').value = patientDetails.occupation;
+            document.getElementById('organization').value = patientDetails.organization;
+            document.getElementById('rAddress').value = patientDetails.res_address;
+            document.getElementById('pAddress').value = patientDetails.postal_add;
+            document.getElementById('email').value = patientDetails.email;
+            document.getElementById('age').value = patientDetails.age;
+            document.getElementById('phone').value = patientDetails.phone;
+            document.getElementById('dob').value = patientDetails.date_birth;
+            document.getElementById('gender').value = patientDetails.gender;
+        });
+    
+        // Handle errors while fetching patient details
+        window.electron.ipcRenderer.on('patient-details-error', (event, errorMessage) => {
+            alert('Error fetching patient details: ' + errorMessage);
+        });
+    </script>
+    
+</html>

@@ -6,6 +6,7 @@ const loginHandler = require('./src/backend/loginHandler');
 const patientsList = require('./src/backend/patientsList');
 const lastID = require('./src/backend/getPatId');
 const addPat = require('./src/backend/patientsQuery');
+const getPatientDetails =  require('./src/backend/getDetails');
 // const fetchData = require('./fetchData');
 
 
@@ -14,6 +15,7 @@ ipcMain.on('login', loginHandler);
 ipcMain.on('getPatientsList', patientsList.getPatientsList);
 ipcMain.on('getBirthdayList', patientsList.getBirthdayList);
 ipcMain.on('lastID', lastID);
+ipcMain.on('getPatientDetails', getPatientDetails);
 ipcMain.on('addPat', addPat);
 // ipcMain.on('fetchData', fetchData);
 
